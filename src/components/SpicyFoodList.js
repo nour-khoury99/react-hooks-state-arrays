@@ -6,7 +6,8 @@ function SpicyFoodList() {
 
   function handleAddFood() {
     const newFood = getNewRandomSpicyFood();
-    console.log(newFood);
+    const newFoodArray = [...foods, newFood];
+    setFoods(newFoodArray);
   }
 
   const foodList = foods.map((food) => (
@@ -15,9 +16,15 @@ function SpicyFoodList() {
     </li>
   ));
 
+  function handleLiClick(id) {
+    const newFoodArray = foods.filter((food) => food.id !== id);
+    setFoods(newFoodArray);
+  }
+
   return (
     <div>
       <button onClick={handleAddFood}>Add New Food</button>
+      <button onClick={handleClick}>Remove New Food</button>
       <ul>{foodList}</ul>
     </div>
   );
